@@ -8,14 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {
-  }
+  constructor() {}
 
-  search(searchTerm: string) {
-    if (searchTerm) {
-      this.router.navigateByUrl('/search/' + searchTerm);
-    } else {
-      this.router.navigateByUrl('/');
-    }
-  }
 }

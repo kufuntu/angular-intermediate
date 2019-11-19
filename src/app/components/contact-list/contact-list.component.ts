@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { User } from '../../types/user';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 
@@ -20,15 +19,11 @@ export class ContactListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getContactList().subscribe(contacts => {
+    this.activeRoute.params.pipe(
+      mergeMap(params => this.contactService.getContactList(params.term || ''))
+    ).subscribe(contacts => {
       this.contacts = contacts;
     });
-  }
-
-  getContactList() {
-    return this.activeRoute.params.pipe(
-      mergeMap(params => this.contactService.getContactList(params.term || ''))
-    );
   }
 
 }

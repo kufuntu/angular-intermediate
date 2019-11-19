@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.spec.json",
+    "files": [
+        "src/all.test.ts",
+        "src/polyfills.ts"
+    ],
+    "include": [
+        "src/**/*.spec.ts",
+        "src/**/*.spec-dom.ts",
+        "src/**/*.d.ts"
+    ],
+    "exclude": []
+}
