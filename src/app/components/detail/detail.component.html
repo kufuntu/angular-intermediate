@@ -1,3 +1,41 @@
 <div *ngIf="data$ | async; let data">
-  <h1>{{ data.firstName }}</h1>
+
+  <div class="img-box">
+    <img [src]="data.image" />
+    <h1>{{ data.firstName }} {{ data.lastName }}</h1>
+    <div class="buttons">
+      <button mat-raised-button color="primary">
+        <mat-icon>share</mat-icon> Share
+      </button>
+      <button mat-raised-button color="primary">
+        <mat-icon>print</mat-icon> Print
+      </button>
+    </div>
+  </div>
+  <mat-card>
+    <div class="columns">
+      <div>
+        <h4>Adresse</h4>
+        {{ data.firstName }} {{ data.lastName }}<br />
+        {{ data.address }}<br />
+        {{ data.zip }} {{ data.city }}
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        0176 1234567<br />
+        <a href="mailto:me@example.com">me@example.com</a>
+      </div>
+      <div class="tags">
+        <h4>Interessen</h4>
+        <mat-chip-list>
+          <mat-chip>Test</mat-chip>
+          <mat-chip>Test</mat-chip>
+          <mat-chip>Test</mat-chip>
+          <mat-chip>Test</mat-chip>
+          <mat-chip>Test</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </mat-card>
+  <button class="back" routerLink="/" mat-raised-button color="primary"><mat-icon>arrow_left</mat-icon> Zurück zur Liste</button>
 </div>

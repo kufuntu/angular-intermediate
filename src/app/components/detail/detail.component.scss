@@ -1,0 +1,38 @@
+@import '../../../assets/scss/variables';
+
+:host {
+  display: block;
+  padding-top: 30px;
+}
+
+.back {
+  margin-top: 20px;
+}
+
+.img-box {
+  display: flex;
+  align-items: flex-end;
+  h1 {
+    flex: 1 0 0px;
+    margin: 0 0 10px 20px;
+  }
+  button {
+    margin: 0 0 10px 10px;
+  }
+}
+
+.columns {
+  display: flex;
+  & > div {
+    flex: 1 1 0px;
+    border-right: 1px solid $color-border;
+    margin-right: 20px;
+    padding-right: 20px;
+  }
+  & > div.tags {
+    flex: 0 0 200px;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}
