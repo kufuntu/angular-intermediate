@@ -1,11 +1,16 @@
 @import '~@angular/material/theming';
+@import '../variables';
 
 // Include the common styles for Angular Material
 @include mat-core();
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
-$CaseStudy-primary: mat-palette($mat-indigo);
-$CaseStudy-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$primary: map-merge($mat-blue, (900: $color-blue));
+$accent: map-merge($mat-red, (900: $color-red));
+
+$CaseStudy-primary: mat-palette($primary, 900);
+$CaseStudy-accent: mat-palette($accent, 900);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $CaseStudy-theme: mat-light-theme($CaseStudy-primary, $CaseStudy-accent);
