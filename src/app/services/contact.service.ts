@@ -15,6 +15,14 @@ export class ContactService {
     return this.http.get<User[]>(this.getContactListUrl);
   }
 
+  getContact(id: string): Observable<User> {
+    return this.http.get<User>(this.getContactUrl(id));
+  }
+
+  getContactUrl(id: string) {
+    return environment.api + '/contact/' + id;
+  }
+
   get getContactListUrl() {
     return environment.api + '/contact/list';
   }

@@ -8,11 +8,13 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactListComponent
+    ContactListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
