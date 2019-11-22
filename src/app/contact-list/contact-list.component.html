@@ -1,7 +1,8 @@
-<mat-card class="example-card">
+<mat-card *ngFor="let contact of (contacts$ | async)" class="example-card">
+  <img mat-card-image [src]="contact.image">
   <mat-card-header>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    <mat-card-title>{{ contact.firstName }} {{ contact.lastName }}</mat-card-title>
+    <mat-card-subtitle>{{ contact.zip }} {{ contact.city }}</mat-card-subtitle>
   </mat-card-header>
 </mat-card>
 
