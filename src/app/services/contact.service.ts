@@ -11,8 +11,10 @@ export class ContactService {
 
   constructor(private http: HttpClient) { }
 
-  getContactList(): Observable<User[]> {
-    return this.http.get<User[]>(this.getContactListUrl);
+  getContactList(term: string): Observable<User[]> {
+    return this.http.get<User[]>(this.getContactListUrl, {
+      params: { term }
+    });
   }
 
   getContact(id: string): Observable<User> {

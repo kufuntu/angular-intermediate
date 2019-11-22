@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
+import { User } from '../../types/user';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contact-list',
@@ -8,11 +12,17 @@ import { ContactService } from '../../services/contact.service';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts$ = this.contactService.getContactList();
+  contacts$: Observable<User[]>;
 
-  constructor(private contactService: ContactService) { }
+  constructor(
+    private contactService: ContactService,
+    private activeRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.contacts$ = this.activeRoute.params.pipe(
+      mergeMap(params => this.contactService.getContactList(params.term || ''))
+    );
   }
 
 }
