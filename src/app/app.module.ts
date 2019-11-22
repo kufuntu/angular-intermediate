@@ -6,18 +6,22 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactListComponent } from './components/contact-list/contact-list.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { SearchFieldComponent } from './components/search-field/search-field.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    DetailComponent
+    DetailComponent,
+    SearchFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,9 @@ import { DetailComponent } from './components/detail/detail.component';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatChipsModule
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
