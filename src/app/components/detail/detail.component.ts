@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { ContactService } from '../../services/contact.service';
 import { User } from '../../types/user';
 
@@ -22,7 +22,10 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.data$ = this.activeRoute.params.pipe(
-      mergeMap(data => this.contactService.getContact(data.id))
+      mergeMap(route => this.contactService.getContact(route.id)),
+      mergeMap(user => this.contactService.getContactInterests(user.id).pipe(
+        map(interests => ({ ...user, interests }))
+      ))
     );
   }
 

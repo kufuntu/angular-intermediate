@@ -22,17 +22,13 @@
       </div>
       <div>
         <h4>Kontakt</h4>
-        0176 1234567<br />
-        <a href="mailto:me@example.com">me@example.com</a>
+        {{ data.phone }}<br />
+        <a [href]="'mailto:' + data.email">{{ data.email }}</a>
       </div>
       <div class="tags">
         <h4>Interessen</h4>
         <mat-chip-list>
-          <mat-chip>Test</mat-chip>
-          <mat-chip>Test</mat-chip>
-          <mat-chip>Test</mat-chip>
-          <mat-chip>Test</mat-chip>
-          <mat-chip>Test</mat-chip>
+          <mat-chip *ngFor="let interest of data.interests">{{ interest }}</mat-chip>
         </mat-chip-list>
       </div>
     </div>
