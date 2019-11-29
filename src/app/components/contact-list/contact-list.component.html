@@ -1,5 +1,5 @@
-<mat-card [routerLink]="'detail/' + contact.id" *ngFor="let contact of (contacts$ | async)" class="example-card">
-  <img mat-card-image [src]="contact.image">
+<mat-card [routerLink]="'/detail/' + contact.id" *ngFor="let contact of (contacts$ | async)" class="example-card">
+  <div maat-mat-card-image class="image" [style.background-image]="'url(' + contact.image + ')'"></div>
   <mat-card-header>
     <mat-card-title>{{ contact.firstName }} {{ contact.lastName }}</mat-card-title>
     <mat-card-subtitle>{{ contact.zip }} {{ contact.city }}</mat-card-subtitle>
