@@ -16,8 +16,8 @@ export class DetailComponent implements OnInit {
   data$: Observable<User>;
 
   constructor(
-    private activeRoute: ActivatedRoute,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private activeRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
