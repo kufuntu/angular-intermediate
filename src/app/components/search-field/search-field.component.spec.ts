@@ -1,25 +1,68 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SearchFieldComponent } from './search-field.component';
+import { fakeAsync, tick } from '@angular/core/testing';
 
 describe('SearchFieldComponent', () => {
   let component: SearchFieldComponent;
-  let fixture: ComponentFixture<SearchFieldComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchFieldComponent ]
-    })
-    .compileComponents();
-  }));
+  let emittedSearchTerm: string;
+  let emittedSearchTermCounter: number;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SearchFieldComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new SearchFieldComponent();
+    component.ngOnInit();
+
+    subscribeToSearchTerm();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('onInput', () => {
+    const searchTerm = 'xyz';
+
+    it('should emit the search term after 500ms', fakeAsync(() => {
+      onInput(searchTerm);
+      tick(500);
+      expect(emittedSearchTerm).toBe(searchTerm, 'emittedSearchTerm should be the given input after 500 ms');
+    }));
+
+    it('should only emit search term when distinct from previous one', fakeAsync(() => {
+      onInput('x');
+      tick(500);
+
+      onInput('');
+      onInput('x');
+      tick(500);
+
+      expect(emittedSearchTerm).toBe('x');
+      expect(emittedSearchTermCounter).toBe(1);
+    }));
   });
+
+  describe('onEnter', () => {
+    const searchTerm = 'xyz';
+
+    beforeEach(() => {
+      onInput(searchTerm);
+    });
+
+    it('should emit the search term', () => {
+      component.onEnter(null);
+
+      expect(emittedSearchTerm).toBe(searchTerm);
+    });
+  });
+
+  function subscribeToSearchTerm() {
+    emittedSearchTermCounter = 0;
+    component.searchTerm.subscribe((value) => {
+      emittedSearchTerm = value;
+      emittedSearchTermCounter++;
+    }, () => {
+      emittedSearchTerm = null;
+      emittedSearchTermCounter++;
+    });
+  }
+
+  function onInput(searchTerm: string) {
+    const htmlInputEvent = { value: searchTerm };
+    const event = { target: htmlInputEvent } as any;
+    component.onInput(event);
+  }
 });
