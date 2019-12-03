@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search-field',
@@ -12,12 +12,12 @@ export class SearchFieldComponent implements OnInit, OnDestroy {
   @Output() searchTerm = new EventEmitter<string>();
   private searchAsYouType = new Subject<string>();
   private textValue: string;
-  private sub: Subscription;
+  private searchAsYouTypeSubscription: Subscription;
 
   constructor() { }
 
   ngOnInit() {
-    this.sub = this.searchAsYouType.pipe(
+    this.searchAsYouTypeSubscription = this.searchAsYouType.pipe(
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe((newValue) => {
@@ -26,8 +26,8 @@ export class SearchFieldComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.sub) {
-      this.sub.unsubscribe();
+    if (this.searchAsYouTypeSubscription) {
+      this.searchAsYouTypeSubscription.unsubscribe();
     }
   }
 
@@ -36,7 +36,7 @@ export class SearchFieldComponent implements OnInit, OnDestroy {
   }
 
   onInput(e: Event) {
-    this.textValue = (<HTMLInputElement>e.target).value;
+    this.textValue = (e.target as HTMLInputElement).value;
     this.searchAsYouType.next(this.textValue);
   }
 
