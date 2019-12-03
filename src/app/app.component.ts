@@ -7,15 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'CaseStudy';
 
   constructor(private router: Router) {
-
   }
 
-  search($event: string) {
-    if ($event) {
-      this.router.navigateByUrl('/search/' + $event);
+  search(searchTerm: string) {
+    if (searchTerm) {
+      this.router.navigateByUrl('/search/' + searchTerm);
     } else {
       this.router.navigateByUrl('/');
     }
