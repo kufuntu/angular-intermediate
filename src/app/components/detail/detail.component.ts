@@ -13,7 +13,7 @@ import { User } from '../../types/user';
 })
 export class DetailComponent implements OnInit {
 
-  data$: Observable<User>;
+  user: User;
 
   constructor(
     private contactService: ContactService,
@@ -21,12 +21,14 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.data$ = this.activeRoute.params.pipe(
+    this.activeRoute.params.pipe(
       mergeMap(route => this.contactService.getContact(route.id)),
       mergeMap(user => this.contactService.getContactInterests(user.id).pipe(
         map(interests => ({ ...user, interests }))
       ))
-    );
+    ).subscribe(user => {
+      this.user = user;
+    });
   }
 
 }

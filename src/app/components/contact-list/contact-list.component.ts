@@ -12,7 +12,7 @@ import { mergeMap } from 'rxjs/operators';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts$: Observable<User[]>;
+  contacts: User[];
 
   constructor(
     private contactService: ContactService,
@@ -20,9 +20,11 @@ export class ContactListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contacts$ = this.activeRoute.params.pipe(
+    this.activeRoute.params.pipe(
       mergeMap(params => this.contactService.getContactList(params.term || ''))
-    );
+    ).subscribe(contacts => {
+      this.contacts = contacts;
+    });
   }
 
 }

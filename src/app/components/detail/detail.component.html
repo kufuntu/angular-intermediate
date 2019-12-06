@@ -1,8 +1,7 @@
-<div *ngIf="data$ | async; let data">
-
+<div>
   <div class="img-box">
-    <img [src]="data.image" />
-    <h1>{{ data.firstName }} {{ data.lastName }}</h1>
+    <img [src]="user.image" />
+    <h1>{{ user.firstName }} {{ user.lastName }}</h1>
     <div class="buttons">
       <button mat-raised-button color="primary">
         <mat-icon>share</mat-icon> Share
@@ -16,19 +15,19 @@
     <div class="columns">
       <div>
         <h4>Adresse</h4>
-        {{ data.firstName }} {{ data.lastName }}<br />
-        {{ data.address }}<br />
-        {{ data.zip }} {{ data.city }}
+        {{ user.firstName }} {{ user.lastName }}<br />
+        {{ user.address }}<br />
+        {{ user.zip }} {{ user.city }}
       </div>
       <div>
         <h4>Kontakt</h4>
-        {{ data.phone }}<br />
-        <a [href]="'mailto:' + data.email">{{ data.email }}</a>
+        {{ user.phone }}<br />
+        <a [href]="'mailto:' + user.email">{{ user.email }}</a>
       </div>
       <div class="tags">
         <h4>Interessen</h4>
         <mat-chip-list>
-          <mat-chip *ngFor="let interest of data.interests">{{ interest }}</mat-chip>
+          <mat-chip *ngFor="let interest of user.interests">{{ interest }}</mat-chip>
         </mat-chip-list>
       </div>
     </div>
