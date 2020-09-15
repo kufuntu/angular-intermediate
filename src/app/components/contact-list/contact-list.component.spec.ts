@@ -27,11 +27,11 @@ describe('ContactListComponent', () => {
       });
       component.ngOnInit();
 
-      /*component.contacts$.subscribe((userList) => {
+      component.getContactList().subscribe((userList) => {
         userIds = userList.map(user => user.id);
       }, () => {
         userIds = null;
-      });*/
+      });
     });
 
     it('should get the contact list', () => {

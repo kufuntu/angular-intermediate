@@ -20,11 +20,15 @@ export class ContactListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.activeRoute.params.pipe(
-      mergeMap(params => this.contactService.getContactList(params.term || ''))
-    ).subscribe(contacts => {
+    this.getContactList().subscribe(contacts => {
       this.contacts = contacts;
     });
+  }
+
+  getContactList() {
+    return this.activeRoute.params.pipe(
+      mergeMap(params => this.contactService.getContactList(params.term || ''))
+    );
   }
 
 }

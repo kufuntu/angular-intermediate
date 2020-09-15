@@ -21,14 +21,18 @@ export class DetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.activeRoute.params.pipe(
+    this.getUser().subscribe(user => {
+      this.user = user;
+    });
+  }
+
+  getUser() {
+    return this.activeRoute.params.pipe(
       mergeMap(route => this.contactService.getContact(route.id)),
       mergeMap(user => this.contactService.getContactInterests(user.id).pipe(
         map(interests => ({ ...user, interests }))
       ))
-    ).subscribe(user => {
-      this.user = user;
-    });
+    );
   }
 
 }

@@ -26,11 +26,11 @@ describe('DetailComponent', () => {
       contactServiceSpy.getContactInterests.and.callFake((userId) => of([ 'a_' + userId, 'b_' + userId ]));
       component.ngOnInit();
 
-      /*component.data.subscribe(user => {
+      component.getUser().subscribe(user => {
         userData = user;
       }, () => {
         userData = null;
-      });*/
+      });
     });
 
     it('should get the contact information', () => {
