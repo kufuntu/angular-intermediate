@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ContactListComponent } from './contact-list.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
@@ -12,7 +12,7 @@ describe('ContactListComponent', () => {
   let fixture: ComponentFixture<ContactListComponent>;
   let contactServiceSpy: jasmine.SpyObj<ContactService>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     contactServiceSpy = jasmine.createSpyObj('ContactService', ['getContactList']);
 
     TestBed.configureTestingModule({
