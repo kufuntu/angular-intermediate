@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://saf-lx-jenkbs1.home.cas.de:32768'
+  api: 'https://andre-steudel.de'
 };
 
 /*
