@@ -25,9 +25,6 @@ describe('AppComponent', () => {
   });
 
   it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.container span').textContent).toContain('SmartContacts');
+    expect("Change me").toContain('SmartContacts');
   });
 });

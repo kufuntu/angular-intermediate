@@ -12,13 +12,11 @@ describe('AppComponent', () => {
 
   describe('search', () => {
     it('should navigate to / when search term is empty', () => {
-      component.search(undefined);
-      expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/');
+      expect(true).toBe(false);
     });
 
     it('should navigate to /search/xyz when search term is xyz', () => {
-      component.search('xyz');
-      expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/search/xyz');
+      expect(true).toBe(false);
     });
   });
 });

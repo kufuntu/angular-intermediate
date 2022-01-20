@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { User } from '../../types/user';
-import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 
