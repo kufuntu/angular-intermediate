@@ -33,31 +33,18 @@ describe('DetailComponent', () => {
       });
     });
 
-    it('should get the contact information', () => {
-      (activeRouteSpy.params as Subject<Params>).next({ id: 'USER1' });
-
-      expect(contactServiceSpy.getContact).toHaveBeenCalledWith('USER1');
-
-    });
-
-    it('should get the contact interests', () => {
-      (activeRouteSpy.params as Subject<Params>).next({ id: 'USER1' });
-
-      expect(contactServiceSpy.getContactInterests).toHaveBeenCalledWith('USER1');
-    });
-
-    it('should have user data', () => {
+    it('should initialize the user', () => {
       (activeRouteSpy.params as Subject<Params>).next({ id: 'USER1' });
 
       expect(userData).toEqual({ id: 'USER1', interests: [ 'a_USER1', 'b_USER1' ] } as User);
     });
 
-    describe('when params change', () => {
+    describe('when route params change', () => {
       beforeEach(() => {
         (activeRouteSpy.params as Subject<Params>).next({ id: 'USER1' });
       });
 
-      it('should update user data', () => {
+      it('should update the user', () => {
         (activeRouteSpy.params as Subject<Params>).next({ id: 'USER2' });
 
         expect(userData).toEqual({ id: 'USER2', interests: [ 'a_USER2', 'b_USER2' ] } as User);

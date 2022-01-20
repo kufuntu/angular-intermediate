@@ -34,30 +34,11 @@ describe('ContactListComponent', () => {
       });
     });
 
-    it('should get the contact list', () => {
-      (activeRouteSpy.params as Subject<Params>).next({ term: 'x' });
-
-      expect(contactServiceSpy.getContactList).toHaveBeenCalledWith('x');
-    });
-
-    it('should have contacts', () => {
+    it('should initialize the contacts', () => {
       (activeRouteSpy.params as Subject<Params>).next({ term: 'x' });
 
       expect(userIds.length).toBe(1);
       expect(userIds[0]).toBe('USER_x');
-    });
-
-    describe('when params change', () => {
-      beforeEach(() => {
-        (activeRouteSpy.params as Subject<Params>).next({ term: 'x' });
-      });
-
-      it('should update user data', () => {
-        (activeRouteSpy.params as Subject<Params>).next({ term: 'y' });
-
-        expect(userIds.length).toBe(1);
-        expect(userIds[0]).toBe('USER_y');
-      });
     });
   });
 });

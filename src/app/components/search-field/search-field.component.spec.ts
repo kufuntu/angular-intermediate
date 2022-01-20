@@ -36,13 +36,10 @@ describe('SearchFieldComponent', () => {
   });
 
   describe('onEnter', () => {
-    const searchTerm = 'xyz';
-
-    beforeEach(() => {
+    it('should emit the search term immediately', () => {
+      const searchTerm = 'xyz';
       onInput(searchTerm);
-    });
 
-    it('should emit the search term', () => {
       component.onEnter(null);
 
       expect(emittedSearchTerm).toBe(searchTerm);
@@ -53,9 +50,6 @@ describe('SearchFieldComponent', () => {
     emittedSearchTermCounter = 0;
     component.searchTerm.subscribe((value) => {
       emittedSearchTerm = value;
-      emittedSearchTermCounter++;
-    }, () => {
-      emittedSearchTerm = null;
       emittedSearchTermCounter++;
     });
   }
