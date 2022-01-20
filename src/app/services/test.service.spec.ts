@@ -9,7 +9,7 @@ describe('TestService', () => {
   });
 
   describe('getUsers', () => {
-    it('should match a-b-c', () => {
+    xit('should match a-b-c', () => {
       const myObs$ = cold('a-b-c', { a: 'Anna', b: 'Bert', c: 'Chris' });
       myObs$.subscribe(data => console.log(data));
     });

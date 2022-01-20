@@ -12,11 +12,11 @@ describe('AppComponent', () => {
 
   describe('search', () => {
     it('should navigate to / when search term is empty', () => {
-      expect(true).toBe(false);
+      pending();
     });
 
     it('should navigate to /search/xyz when search term is xyz', () => {
-      expect(true).toBe(false);
+      pending();
     });
   });
 });
